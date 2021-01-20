@@ -2,6 +2,8 @@
 
 @section('title', 'first crud - Home')
 
+@section('home', 'active')
+
 @section('content')
     <main>
         <div class="container">

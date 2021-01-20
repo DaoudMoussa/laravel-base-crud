@@ -5,10 +5,10 @@
 
     <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
         <ul class="navbar-nav">
-            <li class="nav-item active">
+            <li class="nav-item @yield('home')">
                 <a class="nav-link" href="{{ route('home') }}">Home</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item @yield('products')">
                 <a class="nav-link" href="{{ route('products.index') }}">Products</a>
             </li>
         </ul>
