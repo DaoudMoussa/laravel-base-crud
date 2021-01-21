@@ -22,11 +22,12 @@
                                 <th scope="row">{{ $product->id }}</th>
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->price }} $</td>
-                                <td><a class="btn btn-primary" href="{{ route('products.show', [ 'product' => $product->id ]) }}">Dettaglio</a></td>
+                                <td><a class="btn btn-info" href="{{ route('products.show', [ 'product' => $product->id ]) }}">Dettaglio</a></td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
+                <a class="btn btn-primary" href="{{ route('products.create') }}">Aggiungi prodotto</a>
             </div>
         </div>
     </main>
