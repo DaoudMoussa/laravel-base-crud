@@ -22,7 +22,15 @@
                                 <th scope="row">{{ $product->id }}</th>
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->price }} $</td>
-                                <td><a class="btn btn-info" href="{{ route('products.show', [ 'product' => $product->id ]) }}">Dettaglio</a></td>
+                                <td>
+                                    <a class="btn btn-info" href="{{ route('products.show', [ 'product' => $product->id ]) }}">Dettaglio</a>
+                                    <a class="btn btn-warning" href="{{ route('products.edit', [ 'product' => $product->id ]) }}">Modifica</a>
+                                    <form class="d-inline-block" action="{{ route('products.destroy', [ 'product' => $product->id ]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Cancella</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

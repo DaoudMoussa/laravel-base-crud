@@ -55,13 +55,17 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        $data = [
-            'product' => Product::find($id)
-        ];
+        if ($product) {
+            $data = [
+                'product' => $product
+            ];
 
-        return view('products.show', $data);
+            return view('products.show', $data);
+        } else {
+            abort(404);
+        }
     }
 
     /**
@@ -70,9 +74,17 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        if ($product) {
+            $data  = [
+                'product' => $product
+            ];
+
+            return view('products.edit', $data);
+        } else {
+            abort(404);
+        }
     }
 
     /**
@@ -82,9 +94,15 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        if ($product) {
+            $product->update($request->all());
+
+            return redirect()->route('products.show', [ 'product' => $product->id ]);
+        } else {
+            abort(404);
+        }
     }
 
     /**
@@ -93,8 +111,14 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        if ($product) {
+            $product->delete();
+
+            return redirect()->route('products.index');
+        } else {
+            abort(404);
+        }
     }
 }
